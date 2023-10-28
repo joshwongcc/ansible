@@ -1,8 +1,8 @@
 - name: ansible Initiate
   hosts: localhost
   vars:
-    source_key: "./.ssh/id_rsa" 
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    source_key: "./.ssh/id_ed25519" 
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   pre_tasks:
     - name: Update pacman (pacman -Syu)
       become: true
