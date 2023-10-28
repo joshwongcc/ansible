@@ -13,6 +13,16 @@
     accept_hostkey: yes
     version: main
 
+- name: Remove default .bashrc
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.bashrc"
+    state: absent
+
 - name: Stow Dotfiles
   shell: cd "{{ lookup('env', 'HOME') }}/.dotfiles" && ./archway
+
+- name: Stow Dotfiles (arch13)
+  shell: cd "{{ lookup('env', 'HOME') }}/.dotfiles" && ./archway13
+  tags:
+    - arch13
 

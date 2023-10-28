@@ -13,4 +13,5 @@ USER abettik
 FROM asquith
 WORKDIR /home/abettik/ansible
 COPY --chown=abettik:observer . .
-CMD /bin/bash -c "ansible-playbook local.yaml --ask-vault-pass; /bin/bash"
+CMD /bin/bash -c \
+    "ansible-playbook local.yaml --tags untagged --ask-vault-pass; /bin/bash"
