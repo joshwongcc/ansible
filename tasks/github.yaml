@@ -1,0 +1,11 @@
+- name: Git Personal Setup Email
+  git_config:
+    name: user.email
+    scope: global
+    value: "joshwongcc@gmail.com"
+
+- name: Git Personal Setup Name
+  git_config:
+    name: user.name
+    scope: global
+    value: "josh"

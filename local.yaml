@@ -1,0 +1,19 @@
+- name: ansible Initiate
+  hosts: localhost
+  vars:
+    source_key: "./.ssh/id_rsa" 
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  pre_tasks:
+    - name: Update pacman (pacman -Syu)
+      become: true
+      community.general.pacman:
+        force: true
+        update_cache: true
+        state: present
+  tasks:
+    - ansible.builtin.include_tasks:
+        file: tasks/ssh.yaml
+    - ansible.builtin.include_tasks:
+        file: tasks/github.yaml
+    - ansible.builtin.include_tasks:
+        file: tasks/dotfiles.yaml
